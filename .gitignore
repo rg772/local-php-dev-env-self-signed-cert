@@ -1,3 +1,6 @@
 cert/server.crt
 cert/server.csr
 cert/server.key
+*.key
+*.csr
+*.crt
