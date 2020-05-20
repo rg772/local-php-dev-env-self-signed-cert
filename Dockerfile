@@ -1,20 +1,28 @@
 # Provides an in place server for PHP/Laravel applicaions
+# Inspiration from https://stackoverflow.com/questions/53445213
 
-FROM httpd:2.4
+FROM alpine:latest
+RUN \
+    apk add --no-cache \
+    apache2-proxy \
+    apache2-ssl \
+    apache2-utils \
+    curl \
+    git \
+    logrotate \
+    openssl \
+    bash \
+    php7-apache2 
 
-COPY ./cert/server.crt /usr/local/apache2/conf/server.crt
-COPY ./cert/server.key /usr/local/apache2/conf/server.key
 
-# according to documentation, this is a way to unlock https in the parent container
-# https://hub.docker.com/_/httpd?tab=description
-RUN cd /usr/local/apache2 && \
-    sed -i \
-        -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
-        -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
-        -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
-        conf/httpd.conf
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
 
-# Unlock .bashrc aliases 
-RUN sed -i \
-        -e 's/^# \(alias .*\)/\1/g' \
-        /root/.bashrc
+WORKDIR /var/www/localhost/html
+
+EXPOSE 80 443
+
+COPY ./passthru/bashrc /root/.bashrc
+
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
