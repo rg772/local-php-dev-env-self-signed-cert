@@ -7,4 +7,3 @@ services:
       - '443:443'
     volumes:
       - ./html:/var/www/html
-      - ./passthru:/passthru
