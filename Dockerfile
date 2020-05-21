@@ -20,7 +20,7 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
-WORKDIR /var/www/localhost/html
+WORKDIR /var/www/localhost/htdocs
 
 EXPOSE 80 443
 
