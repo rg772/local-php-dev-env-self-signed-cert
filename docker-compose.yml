@@ -7,6 +7,6 @@ services:
       - '443:443'
       - '80:80'
     volumes:
-      - ./example-app/public:/var/www/localhost/htdocs/public
+      - ./example-app:/var/www/localhost/htdocs
       - ~/.ssh:/root/.ssh:ro
       - ./passthru:/passthru
