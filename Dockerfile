@@ -9,6 +9,7 @@ RUN \
     apache2-utils \
     curl \
     git \
+    vim \ 
     logrotate \
     openssl \
     bash \
