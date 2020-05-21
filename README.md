@@ -17,6 +17,7 @@ Drawbacks/To Do
 =
 - There is no database server
 - Still need to add composer
+- Local .ssh folder is mapped for easy git operation. You can disable this by in volumes 
 
 To use
 = 
