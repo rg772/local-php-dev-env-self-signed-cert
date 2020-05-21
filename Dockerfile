@@ -13,7 +13,15 @@ RUN \
     logrotate \
     openssl \
     bash \
-    php7-apache2 
+    php7-apache2 \
+    php7-curl \
+    php7-openssl \
+    php7-iconv \
+    php7-json \
+    php7-mbstring \
+    php7-phar 
+    
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
 
 
 ENV APACHE_RUN_USER www-data
