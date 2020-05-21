@@ -1,0 +1,5 @@
+
+alias grep='grep --color'
+alias ll='ls -alh'
+
+export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\[\033[00m\] $ "
