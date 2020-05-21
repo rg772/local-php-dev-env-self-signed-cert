@@ -24,6 +24,10 @@ WORKDIR /var/www/localhost/html
 
 EXPOSE 80 443
 
+# A place to put aliases and other CLI operations
 COPY ./passthru/bashrc /root/.bashrc
+
+# A place to configure. For laravel, we need to adjust to /public
+COPY ./passthru/httpd.conf /etc/apache2/httpd.conf
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
