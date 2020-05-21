@@ -17,10 +17,12 @@ To use
 = 
 1. Clone into root level of your project
 2. Edit `httpd.conf` as needed `bashrc` in `/passthru/`
-3. Edit `docker-compose.yml` so that 
-
+3. Edit `docker-compose.yml` so that your project root matches what the container expects. 
 ```yaml
   volumes:
       - <proj-root>:/var/www/localhost/htdocs
  ```
-
+4. Spin up
+ ```bash
+ docker-compose up --build -d --force-recreate -remove-orphans
+ ```
