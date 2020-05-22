@@ -4,6 +4,7 @@
 FROM alpine:latest
 RUN \
     apk add --no-cache \
+    php7-apache2 \
     apache2-proxy \
     apache2-ssl \
     apache2-utils \
@@ -13,8 +14,10 @@ RUN \
     logrotate \
     openssl \
     bash \
-    php7-apache2 
-
+    php7-apache2
+    
+# make default public for laravel 
+RUN sed -i "s/htdocs/htdocs\/public/g" /etc/apache2/httpd.conf
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -28,6 +31,6 @@ EXPOSE 80 443
 COPY ./passthru/bashrc /root/.bashrc
 
 # A place to configure. For laravel, we need to adjust to /public
-COPY ./passthru/httpd.conf /etc/apache2/httpd.conf
+# COPY ./passthru/httpd.conf /etc/apache2/httpd.conf
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
