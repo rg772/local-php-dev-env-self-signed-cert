@@ -1,7 +1,6 @@
 Why
 =
 Our new SSO provider will only return back to URI under SSL/TLS (https -- a good thing). I need a local development environment that runs a self signed certificate that can be dropped into a laravel project, configured, run, and then discarded. 
->>>>>>> 6d0bd723a6bee9bab673a186a7c7ced2523a4cc5
 
 Benefits
 =
@@ -20,7 +19,6 @@ Drawbacks/To Do
 - Still need to add composer
 - Local .ssh folder is mapped for easy git operation. You can disable this by in volumes.
 
->>>>>>> 6d0bd723a6bee9bab673a186a7c7ced2523a4cc5
 To use
 = 
 1. Clone into root level of your project
