@@ -1,6 +1,7 @@
 Why
 =
-New SSO provider will only return back to URI under SSL/TLS (https). I need a local development environment that runs a self signed certificate that can be dropped into a laravel project, configured, and run. 
+Our new SSO provider will only return back to URI under SSL/TLS (https -- a good thing). I need a local development environment that runs a self signed certificate that can be dropped into a laravel project, configured, run, and then discarded. 
+>>>>>>> 6d0bd723a6bee9bab673a186a7c7ced2523a4cc5
 
 Benefits
 =
@@ -13,6 +14,13 @@ Assumptions
 Development only. Do not use in production
 This was first designed for laravel
 
+Drawbacks/To Do
+=
+- There is no database server
+- Still need to add composer
+- Local .ssh folder is mapped for easy git operation. You can disable this by in volumes.
+
+>>>>>>> 6d0bd723a6bee9bab673a186a7c7ced2523a4cc5
 To use
 = 
 1. Clone into root level of your project
@@ -24,5 +32,6 @@ To use
  ```
 4. Spin up
  ```bash
- docker-compose up --build -d --force-recreate -remove-orphans
+chmod +x dcup.sh
+./dcup.sh
  ```

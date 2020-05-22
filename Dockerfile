@@ -13,11 +13,11 @@ RUN \
     vim \ 
     logrotate \
     openssl \
-    bash \
-    php7-apache2
+    bash 
     
 # make default public for laravel 
 RUN sed -i "s/htdocs/htdocs\/public/g" /etc/apache2/httpd.conf
+
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -29,8 +29,5 @@ EXPOSE 80 443
 
 # A place to put aliases and other CLI operations
 COPY ./passthru/bashrc /root/.bashrc
-
-# A place to configure. For laravel, we need to adjust to /public
-# COPY ./passthru/httpd.conf /etc/apache2/httpd.conf
 
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
